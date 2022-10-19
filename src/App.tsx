@@ -49,7 +49,7 @@ function App() {
                     <p className='text-center my-10 text-5xl font-extrabold text-indigo-600'>{formatearDinero(cantidad)}</p>
 
                     <h2 className='text-xl font-extrabold text-center text-gray-500'>
-                        Elige un <span className='text-indigo-600'>Plazo</span> a pagar
+                        Elige un <span className='text-indigo-600'>Plazo</span> a pagaRR
                     </h2>
 
                     <select
