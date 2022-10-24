@@ -20,7 +20,7 @@ export default function FormImagen() {
 
     const sendToCloudynary = async (result: string | ArrayBuffer | null) => {
         // const { data } = await axios.post()
-        // console.log(result);
+        console.log(result);
         input?.classList.add('hidden');
     };
 

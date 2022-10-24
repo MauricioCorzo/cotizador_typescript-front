@@ -1,12 +1,22 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import Button from './Componentes/Button';
-import FormImagen from './Componentes/FormImagen';
+// import FormImagen from './Componentes/FormImagen';
 import HeaderCotizador from './Componentes/HeaderCotizador';
-import { formatearDinero } from './Componentes/helpers/funtions';
+import { formatearDinero, calcularTotalPagar } from './Componentes/helpers/funtions';
 
 function App() {
     const [cantidad, setCantidad] = useState<number>(10000);
     const [meses, setMeses] = useState<number>(6);
+    const [total, setTotal] = useState<number>(0);
+    const [pagoMensual, setPagoMensual] = useState<number>(0);
+
+    useEffect(() => {
+        setTotal(calcularTotalPagar(cantidad, meses));
+    }, [cantidad, meses]);
+
+    useEffect(() => {
+        setPagoMensual(total / meses);
+    }, [total]);
 
     const MIN = 0;
     const MAX = 20000;
@@ -49,7 +59,7 @@ function App() {
                     <p className='text-center my-10 text-5xl font-extrabold text-indigo-600'>{formatearDinero(cantidad)}</p>
 
                     <h2 className='text-xl font-extrabold text-center text-gray-500'>
-                        Elige un <span className='text-indigo-600'>Plazo</span> a pagaRR
+                        Elige un <span className='text-indigo-600'>Plazo</span> a pagar
                     </h2>
 
                     <select
@@ -61,6 +71,15 @@ function App() {
                         <option value='12'>12 Meses</option>
                         <option value='24'>24 Meses</option>
                     </select>
+
+                    <div className='my-5 space-y-3 bg-gray-50 p-5'>
+                        <h2 className='text-xl font-extrabold text-center text-gray-500'>
+                            Resumen <span className='text-indigo-600'>de Pagos</span>
+                        </h2>
+                        <p className='text-xl text-gray-500 text-center fon-bold'>{meses} Meses</p>
+                        <p className='text-xl text-gray-500 text-center fon-bold'>{formatearDinero(total)} Total a Pagar</p>
+                        <p className='text-xl text-gray-500 text-center fon-bold'>{formatearDinero(pagoMensual)} Mensuales</p>
+                    </div>
                 </HeaderCotizador>
             </div>
         </>
