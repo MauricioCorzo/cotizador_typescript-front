@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import Button from './Componentes/Button';
 // import FormImagen from './Componentes/FormImagen';
 import HeaderCotizador from './Componentes/HeaderCotizador';
-import { formatearDinero, calcularTotalPagar } from './Componentes/helpers/funtions';
+import { formatearDinero, calcularTotalPagar } from './helpers/funtions';
 
 function App() {
     const [cantidad, setCantidad] = useState<number>(10000);
